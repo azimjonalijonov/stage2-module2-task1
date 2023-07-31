@@ -1,32 +1,59 @@
-<%@ page import="com.example.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page import="com.example.User" %>--%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 
+<%--<html>--%>
+<%--<head>--%>
+<%--    <meta charset="utf-8">--%>
+<%--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--%>
+<%--</head>--%>
+<%--<body>--%>
+<%--<div class="w3-container" style="margin-left:10px; width:400px;">--%>
+<%--    <%--%>
+<%--        User user = (User) request.getAttribute("user");--%>
+<%--        if (user != null) {--%>
+<%--            out.println("<p>User '" + user.getFirstName() + " " + user.getLastName() + "' added!</p>");--%>
+<%--        }--%>
+<%--    %>--%>
+<%--    <h3 class="title w3-text-black">--%>
+<%--        <span>Add user</span>--%>
+<%--    </h3>--%>
+<%--    <form action="add" method="post">--%>
+<%--        <input class="w3-input w3-border" required name="firstName" placeholder="Enter First Name">--%>
+<%--        <br>--%>
+<%--        <input class="w3-input w3-border" required name="lastName" placeholder="Enter Last Name">--%>
+<%--        <br>--%>
+<%--        <button class="w3-button w3-round btn-block w3-green" type="submit">Submit</button>--%>
+<%--    </form>--%>
+<%--    <div>--%>
+<%--        <button class="w3-btn w3-light-blue w3-round-large" onclick="location.href='/users'">Users</button>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--</body>--%>
+<%--</html>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Add User</title>
 </head>
 <body>
-<div class="w3-container" style="margin-left:10px; width:400px;">
-    <%
-        User user = (User) request.getAttribute("user");
-        if (user != null) {
-            out.println("<p>User '" + user.getFirstName() + " " + user.getLastName() + "' added!</p>");
-        }
-    %>
-    <h3 class="title w3-text-black">
-        <span>Add user</span>
-    </h3>
-    <form action="add" method="post">
-        <input class="w3-input w3-border" required name="firstName" placeholder="Enter First Name">
-        <br>
-        <input class="w3-input w3-border" required name="lastName" placeholder="Enter Last Name">
-        <br>
-        <button class="w3-button w3-round btn-block w3-green" type="submit">Submit</button>
-    </form>
-    <div>
-        <button class="w3-btn w3-light-blue w3-round-large" onclick="location.href='/users'">Users</button>
-    </div>
-</div>
+<h1>Add User</h1>
+<form action="${pageContext.request.contextPath}/add" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName"><br>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName"><br>
+    <input type="submit" value="Add User">
+</form>
+
+<h2>Added User:</h2>
+<p>
+    <%-- Display added user details if available --%>
+    <c:if test="${not empty user}">
+        First Name: ${user.firstName}<br>
+        Last Name: ${user.lastName}<br>
+    </c:if>
+</p>
 </body>
 </html>
+
